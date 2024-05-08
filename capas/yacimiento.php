@@ -11,7 +11,6 @@ $consulta = "SELECT
             ir.nombre AS institucion,
             gc.grado_conservacion AS grado,
             ft.num_fotos AS numFotos
-
             FROM yacimientos y
             INNER JOIN municipios m ON y.municipio = m.id_municipio
             INNER JOIN instituciones_responsables ir ON y.institucion_responsable = ir.id_institucion
