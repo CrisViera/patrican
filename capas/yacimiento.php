@@ -143,9 +143,10 @@ while ($row = mysqli_fetch_array($fotos_yacimiento)) {
         for ($i = 1; $i < $num_fotos; $i++) 
             {
                 echo "
-                 <a href='#''>
+                 <a href='#' data-lightbox='models' data-title='".$nombre_yac_original."'>
                     <img src='./img/yacimientos/".$nombre_yac."/".$nombre_yac."_(".$i.").png' class='galeria_foto' id='imgYacimiento' onclick='ampliarImagen()' alt='".$nombre_yac_original."'>
-                 </a>"; 
+                 </a>
+                 "; 
             }
 
         echo "</div>";

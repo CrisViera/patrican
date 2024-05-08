@@ -1,15 +1,3 @@
-
-function ampliarImagen() {
-  var imagen = document.getElementById('imgYacimiento');
-      imagen.style.width = '90%';
-}
-function cerrarImg() {
-    fullImgBox.style.top = "-150%";
-}
-function abrirmenu() {
-    document.getElementsByClassName("menu").style.left = "0";
-}
-
 /* Esto comprueba la localStorage si ya tiene la variable guardada */
 function compruebaAceptaCookies() {
     if(localStorage.aceptaCookies != 'true'){
