@@ -131,10 +131,7 @@ while ($row = mysqli_fetch_array($fotos_yacimiento)) {
                 echo "<li>Visita libre</span></li>";
             }
             
-        } else {
-            // Manejar el caso de error en la consulta
-            echo "Error al ejecutar la consulta: " . mysqli_error($conexion);
-        }
+        } 
         echo "</ul>";
             
         ?>
@@ -147,7 +144,7 @@ while ($row = mysqli_fetch_array($fotos_yacimiento)) {
             {
                 echo "
                  <a href='#''>
-                    <img src='./img/yacimientos/".$nombre_yac."/".$nombre_yac."_(".$i.").png' class='galeria_foto' alt='".$nombre_yac_original."'>
+                    <img src='./img/yacimientos/".$nombre_yac."/".$nombre_yac."_(".$i.").png' class='galeria_foto' id='imgYacimiento' onclick='ampliarImagen()' alt='".$nombre_yac_original."'>
                  </a>"; 
             }
 
