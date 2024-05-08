@@ -11,11 +11,13 @@ $consulta = "SELECT
             ir.nombre AS institucion,
             gc.grado_conservacion AS grado,
             ft.num_fotos AS numFotos
+
             FROM yacimientos y
             INNER JOIN municipios m ON y.municipio = m.id_municipio
             INNER JOIN instituciones_responsables ir ON y.institucion_responsable = ir.id_institucion
             INNER JOIN grado_conservacion gc ON y.grado_conservacion = gc.id_conservacion
             INNER JOIN fotos ft ON y.id_yacimiento = ft.yacimiento
+            INNER JOIN videos vd ON y.id_yacimiento = vd.yacimiento
             WHERE id_yacimiento = '$id_yacimiento'";
 
 // ALMACENAR DATOS DEL YACIMIENTO EN ARRAY
@@ -31,6 +33,7 @@ while ($row = mysqli_fetch_array($info_yacimiento)) {
     $institucion = $row['institucion']; 
     $conservacion = $row['grado']; 
     $fotos = $row['numFotos'];
+    $video = $row['enlace_web'];
   
 }
 
@@ -133,10 +136,7 @@ while ($row = mysqli_fetch_array($fotos_yacimiento)) {
             
         } 
         echo "</ul>";
-            
-        ?>
-        
-        <?php
+
         /* Muestra las fotos del yacimiento */
         echo "<div class='galeria'>";
         
@@ -148,14 +148,20 @@ while ($row = mysqli_fetch_array($fotos_yacimiento)) {
                  </a>
                  "; 
             }
-
         echo "</div>";
+
+        // Muestra un Iframe del vídeo si existe
+            if($video != ""){
+                echo $video;
+            }
+
         // Muestra un mensaje de advertencia en caso de que el yacimiento sea sensible a alteraciones
             if($ubicacion == ""){
                 echo "<p class='advertencia'>".$nombre_yac_original." es muy sensible a alteraciones, por seguridad no se mostrará la ubicación.</p>"; // Muestra la ubicación del yacimiento si está disponible
             }else{
-                 echo $ubicacion; // Muestra Google Maps si está disponible
+                echo $ubicacion; // Muestra Google Maps si está disponible
             }
+
         ?>
         
         
