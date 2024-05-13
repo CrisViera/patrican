@@ -12,11 +12,11 @@ $consulta = "SELECT
             gc.grado_conservacion AS grado,
             ft.num_fotos AS numFotos
             FROM yacimientos y
-            INNER JOIN municipios m ON y.municipio = m.id_municipio
-            INNER JOIN instituciones_responsables ir ON y.institucion_responsable = ir.id_institucion
-            INNER JOIN grado_conservacion gc ON y.grado_conservacion = gc.id_conservacion
-            INNER JOIN fotos ft ON y.id_yacimiento = ft.yacimiento
-            INNER JOIN videos vd ON y.id_yacimiento = vd.yacimiento
+            LEFT JOIN municipios m ON y.municipio = m.id_municipio
+            LEFT JOIN instituciones_responsables ir ON y.institucion_responsable = ir.id_institucion
+            LEFT JOIN grado_conservacion gc ON y.grado_conservacion = gc.id_conservacion
+            LEFT JOIN fotos ft ON y.id_yacimiento = ft.yacimiento
+            LEFT JOIN videos vd ON y.id_yacimiento = vd.yacimiento
             WHERE id_yacimiento = '$id_yacimiento'";
 
 // ALMACENAR DATOS DEL YACIMIENTO EN ARRAY
